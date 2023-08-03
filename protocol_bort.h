@@ -5,6 +5,7 @@
 #include <QDebug>
 #include <QTime>
 #include <QTimer>
+#include "pc_protocol.h"
 
 
 class protocolAUV : public QObject
@@ -20,6 +21,7 @@ public:
 protected:
         QTimer timer;
         void readDataFromPult();
+//    ControlSystem::PC_Protocol *auvProtocol = nullptr;
 //        PC_Protocol *pultProtocol = nullptr;
 };
 

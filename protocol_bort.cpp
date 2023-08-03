@@ -9,7 +9,7 @@ protocolAUV:: protocolAUV (QObject *parent)
 
 void protocolAUV:: tick()
 {
-    readDataFromPult();
+//    readDataFromPult();
 //    readDataFromSensors();
 //    regulators();
 //    BFS_DRK(X[101][0], X[102][0], X[103][0] , X[104][0], X[105][0], X[106][0]);

@@ -5,14 +5,14 @@
 #include "protocol_bort.h"
 #include "protocol.h"
 
+//const QString ConfigFile = "protocols.conf";
 //класс обмена АНПА- планировщик, который создается в АНПА
 namespace ControlSystem {
 class PC_Protocol: public QObject, public MetaUdpProtocol {
     Q_OBJECT
 public:
 explicit PC_Protocol(const QString & config = "protocols.conf",
-                       const QString & name = "agent", QObject *parent = 0)
-{
+                       const QString & name = "agent", QObject *parent = 0){
     udpProtocol = new UdpProtocol <FromPult, ToPult> (config, name, parent);
     connect(timer,SIGNAL(timeout()),SLOT(sendData()));
     connect(udpProtocol->getReceiveSocket(),SIGNAL(readyRead()),SLOT(receiveData()));
@@ -71,7 +71,7 @@ public:
 explicit PC_Protocol(const QString & config = "protocols.conf",
                        const QString & name = "pult", QObject *parent = 0)
 {
-    udpProtocol = new UdpProtocol <ToPult, FromPult> (config, name, parent);
+    udpProtocol = new UdpProtocol <FromPult, ToPult> (config, name, parent);
     connect(timer,SIGNAL(timeout()),SLOT(sendData()));
     connect(udpProtocol->getReceiveSocket(),SIGNAL(readyRead()),SLOT(receiveData()));
     set_ip_receiver(udpProtocol->ip_receiver());
@@ -114,14 +114,13 @@ public slots:
         //static_cast<unsigned char>(rec_data.cSMode);
     }
 public:
-    FromPult send_data;
-    ToPult rec_data;
-    UdpProtocol <ToPult,FromPult> *udpProtocol;
+    FromPult  rec_data;
+    ToPult send_data;
+    UdpProtocol <FromPult, ToPult> *udpProtocol;
 
     bool bindState(){return udpProtocol->bindState();}
 };
 } //namespace Pult
-
 
 
 #endif // PC_PROTOCOL_H

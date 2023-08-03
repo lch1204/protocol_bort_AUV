@@ -10,12 +10,13 @@
 //#include "protocol_bort.h"
 
 template <class ReceiveStruct, class SendStruct>
+
 class UdpProtocol : public QObject {
 public:
     ReceiveStruct rec_data; //структура для приема данных
     SendStruct send_data; //структура для отпарвки данных
     explicit UdpProtocol (const QString & config = "protocols.conf",
-                          const QString & name = "pult", QObject *parent = 0){
+                          const QString & name = "agent", QObject *parent = 0){
         QPIConfig conf(config, QIODevice::ReadOnly);
         QPIConfig::Entry & e(conf.getValue(name));
         //прежде чем создать соединение по сети между пультом и
@@ -129,6 +130,8 @@ public slots:
         return (sendSocket->writeDatagram(ba,m_ip_sender,m_port_sender));
         }
     };
+
+
 
 
     class MetaUdpProtocol {
