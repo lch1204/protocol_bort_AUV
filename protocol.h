@@ -109,17 +109,18 @@ struct ToPult
     DataAH127C dataAH127C;// данные с БСО
     DataPressure dataPressure; //данные с датчика давления
     DataUWB dataUWB;//данные с UWB
-    quint16 checksum;
+    uint checksum;
 };
 
 //структура данных, которая передается из пульта в АНПА
 struct FromPult
 {
+    DataAH127C proverkadataAH127C;
     ControlData controlData; //данные, которые идут с пульта при замыканиии контуров
     e_CSMode cSMode; //режим работы
     ControlContoursFlags controlContoursFlags; //флаги замыкания контуров (если больше 0, то замкнуты
     PowerSystemData desiredPowerState; //структура с желаемыми параметрами системы питания
-    quint16 checksum;
+    uint checksum;
 };
 
 #pragma pack (pop)

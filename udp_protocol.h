@@ -16,7 +16,7 @@ public:
     ReceiveStruct rec_data; //структура для приема данных
     SendStruct send_data; //структура для отпарвки данных
     explicit UdpProtocol (const QString & config = "protocols.conf",
-                          const QString & name = "agent", QObject *parent = 0){
+                          const QString & name = "pult", QObject *parent = 0){
         QPIConfig conf(config, QIODevice::ReadOnly);
         QPIConfig::Entry & e(conf.getValue(name));
         //прежде чем создать соединение по сети между пультом и

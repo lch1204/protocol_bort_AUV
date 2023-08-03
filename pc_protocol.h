@@ -71,7 +71,7 @@ public:
 explicit PC_Protocol(const QString & config = "protocols.conf",
                        const QString & name = "pult", QObject *parent = 0)
 {
-    udpProtocol = new UdpProtocol <FromPult, ToPult> (config, name, parent);
+    udpProtocol = new UdpProtocol <ToPult, FromPult> (config, name, parent);
     connect(timer,SIGNAL(timeout()),SLOT(sendData()));
     connect(udpProtocol->getReceiveSocket(),SIGNAL(readyRead()),SLOT(receiveData()));
     set_ip_receiver(udpProtocol->ip_receiver());
@@ -95,11 +95,12 @@ public slots:
         udpProtocol->send_data = send_data;
         udpProtocol->sendData();
     }
+
     void receiveData(){
         udpProtocol->receiveData();
         rec_data = udpProtocol->rec_data;
         emit dataReceived();
-//            rec_data.controlData.depth;
+//            rec_data.dataAH127C.yaw;
 //            rec_data.controlData.lag;
 //            rec_data.controlData.march;
 //            rec_data.controlData.pitch;
@@ -114,9 +115,9 @@ public slots:
         //static_cast<unsigned char>(rec_data.cSMode);
     }
 public:
-    FromPult  rec_data;
-    ToPult send_data;
-    UdpProtocol <FromPult, ToPult> *udpProtocol;
+    ToPult  rec_data;
+    FromPult send_data;
+    UdpProtocol <ToPult, FromPult> *udpProtocol;
 
     bool bindState(){return udpProtocol->bindState();}
 };
