@@ -42,10 +42,10 @@ struct AUVCurrentData
 {
     //!!тут все текущие параметры АНПА
     quint8 modeReal;//текущий режим
-    ControlContoursFlags controlReal;//текущее состояние контуров
-    quint8 modeAUV_Real;//текущий выбор модель/реальный НПА
-    ControlData ControlDataReal;//текущие курс, дифферент, крен
-    quint16 signalVMA_real;//управление на ВМА (текущие управляющие сигнлы на движители)
+    ControlContoursFlags controlReal;//текущее состояние контуров, чтобы проверить что сигнал с пульта был обработан
+    bool modeAUV_Real;//текущий выбор модель/реальный НПА
+    ControlData ControlDataReal;//текущие курс, дифферент, крен, значения с имушки по сути
+    ControlData signalVMA_real;//управление на ВМА (текущие управляющие сигнлы на движители)
 };
 
 struct PowerSystemData
@@ -78,7 +78,7 @@ struct DataAH127C
     float Y_magn    = 0;
     float Z_magn    = 0;
 
-    float quat [3];
+    float quat [4];
 };
 
 struct DataPressure
