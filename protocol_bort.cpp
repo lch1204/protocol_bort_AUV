@@ -52,9 +52,9 @@ void protocolAUV::readDataFromPult ()
 
 void protocolAUV::writeDataToPult ()
 {
-    auvProtocol->send_data.header.senderID;
-    auvProtocol->send_data.header.receiverID;
-    auvProtocol->send_data.header.msgSize;
+    auvProtocol->send_data.headerSwap.senderID;
+    auvProtocol->send_data.headerSwap.receiverID;
+    auvProtocol->send_data.headerSwap.msgSize;
 
     auvProtocol->send_data.auvData.modeReal;
     auvProtocol->send_data.auvData.controlReal.yaw;

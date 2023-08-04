@@ -53,7 +53,7 @@ struct PowerSystemData
     //состояние системы питания
 };
 
-struct Header
+struct HeaderSwap
 {
     int senderID=0;
     int receiverID=0;
@@ -100,11 +100,11 @@ struct ToPult
 {
     ToPult(int auvID=0)
     {
-        header.senderID = auvID;
-        header.receiverID = 0;
-        header.msgSize = sizeof (ToPult);
+        headerSwap.senderID = auvID;
+        headerSwap.receiverID = 0;
+        headerSwap.msgSize = sizeof (ToPult);
     }
-    Header header;
+    HeaderSwap headerSwap;
     AUVCurrentData auvData;// данные о текущих параметрах
     DataAH127C dataAH127C;// данные с БСО
     DataPressure dataPressure; //данные с датчика давления
