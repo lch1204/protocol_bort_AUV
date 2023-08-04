@@ -24,8 +24,6 @@ protected:
         void readDataFromPult();
         void writeDataToPult();
     ControlSystem::PC_Protocol *auvProtocol = nullptr;
-    Pult::PC_Protocol *pcProtocol = nullptr;
-//        PC_Protocol *pultProtocol = nullptr;
 };
 
 

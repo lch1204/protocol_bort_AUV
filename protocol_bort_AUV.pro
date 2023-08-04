@@ -10,7 +10,8 @@ CONFIG -= app_bundle
 SOURCES += \
         kx_pult/qpiconfig.cpp \
         main.cpp \
-        protocol_bort.cpp
+        protocol_bort.cpp \
+        protocol_pc.cpp
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -19,6 +20,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     kx_pult/qpiconfig.h \
+    protocol_pc.h \
     udp_protocol.h\
     pc_protocol.h \
     protocol.h \

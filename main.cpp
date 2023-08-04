@@ -2,6 +2,7 @@
 
 #include <QDebug>
 #include "protocol_bort.h"
+#include "protocol_pc.h"
 #include <QTimer>
 
 //const QString ConfigFile = "protocols.conf";
@@ -19,6 +20,7 @@ int main(int argc, char *argv[])
     timer.start(1000);
 
     protocolAUV protocolauv;
+    protocolPC protocolpc;
     //Создадим объект обмена со стороны пульта!
 //    Pult::PC_Protocol *pcProtocol = new Pult::PC_Protocol();
 //    ControlSystem::PC_Protocol *auvProtocol = new ControlSystem::PC_Protocol(ConfigFile, "agent");
