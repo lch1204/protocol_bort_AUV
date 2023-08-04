@@ -6,8 +6,7 @@
 #include <QTimer>
 #include <QUdpSocket>
 #include "kx_pult/qpiconfig.h"
-//#include "pc_protocol.h"
-//#include "protocol_bort.h"
+
 
 template <class ReceiveStruct, class SendStruct>
 

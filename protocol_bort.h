@@ -22,9 +22,9 @@ public:
 protected:
         QTimer timer;
         void readDataFromPult();
-        void writeDataToPult();/*
+        void writeDataToPult();
     ControlSystem::PC_Protocol *auvProtocol = nullptr;
-    Pult::PC_Protocol *pcProtocol = nullptr;*/
+    Pult::PC_Protocol *pcProtocol = nullptr;
 //        PC_Protocol *pultProtocol = nullptr;
 };
 

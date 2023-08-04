@@ -78,7 +78,7 @@ struct DataAH127C
     float Y_magn    = 0;
     float Z_magn    = 0;
 
-    float quat [4];
+    float quat [3];
 };
 
 struct DataPressure
@@ -115,7 +115,6 @@ struct ToPult
 //структура данных, которая передается из пульта в АНПА
 struct FromPult
 {
-    DataAH127C proverkadataAH127C;
     ControlData controlData; //данные, которые идут с пульта при замыканиии контуров
     e_CSMode cSMode; //режим работы
     ControlContoursFlags controlContoursFlags; //флаги замыкания контуров (если больше 0, то замкнуты

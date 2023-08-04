@@ -2,7 +2,6 @@
 #define PC_PROTOCOL_H
 
 #include "udp_protocol.h"
-#include "protocol_bort.h"
 #include "protocol.h"
 
 //const QString ConfigFile = "protocols.conf";
@@ -41,19 +40,9 @@ public slots:
         udpProtocol->receiveData();
         rec_data = udpProtocol->rec_data;
         emit dataReceived();
-//            rec_data.controlData.depth;
-//            rec_data.controlData.lag;
-//            rec_data.controlData.march;
-//            rec_data.controlData.pitch;
-//            rec_data.controlData.roll;
-//            rec_data.controlData.yaw;
-//            rec_data.controlContoursFlags.depth;
-//            rec_data.controlContoursFlags.lag;
-//            rec_data.controlContoursFlags.march;
-//            rec_data.controlContoursFlags.pitch;
-//            rec_data.controlContoursFlags.roll;
-//            rec_data.controlContoursFlags.yaw;
-        //static_cast<unsigned char>(rec_data.cSMode);
+        rec_data.controlData.yaw;
+
+        static_cast<unsigned char>(rec_data.cSMode);
     }
 public:
     ToPult send_data;
@@ -100,19 +89,7 @@ public slots:
         udpProtocol->receiveData();
         rec_data = udpProtocol->rec_data;
         emit dataReceived();
-//            rec_data.dataAH127C.yaw;
-//            rec_data.controlData.lag;
-//            rec_data.controlData.march;
-//            rec_data.controlData.pitch;
-//            rec_data.controlData.roll;
-//            rec_data.controlData.yaw;
-//            rec_data.controlContoursFlags.depth;
-//            rec_data.controlContoursFlags.lag;
-//            rec_data.controlContoursFlags.march;
-//            rec_data.controlContoursFlags.pitch;
-//            rec_data.controlContoursFlags.roll;
-//            rec_data.controlContoursFlags.yaw;
-        //static_cast<unsigned char>(rec_data.cSMode);
+//        static_cast<unsigned char>(rec_data.cSMode);
     }
 public:
     ToPult  rec_data;
