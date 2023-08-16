@@ -37,12 +37,12 @@ struct ControlData
 
 struct ControlContoursFlags
 { //флаги замыкания контуров (если 1, то замкнуты, 0 - разомкнуты)
-    quint8 yaw = 0;
-    quint8 pitch = 0;
-    quint8 roll = 0;
-    quint8 march = 0;
-    quint8 depth = 0;
-    quint8 lag = 0;
+    quint8 yaw = 1;
+    quint8 pitch = 1;
+    quint8 roll = 1;
+    quint8 march = 1;
+    quint8 depth = 1;
+    quint8 lag = 1;
 };
 
 
