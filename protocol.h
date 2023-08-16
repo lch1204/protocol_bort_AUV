@@ -13,6 +13,14 @@ enum class e_CSMode : quint8
     MODE_GROUP //групповой
 };
 
+enum class power_Mode : quint8
+{ //режим работы
+    MODE_2 = 0, //включены вычислитель, wifi, uwb
+    MODE_3, //включены вычислитель, wifi, uwb, гидроакустика
+    MODE_4, //включены вычислитель, wifi, uwb, гидроакустика, ВМА
+    MODE_5 //выключить вычислитель на 5 секунд и включить обратно
+};
+
 #pragma pack(push,1)
 //структура данных, которая передается из Северова в Пульт
 //тут описаны данные, которые Пульт принимает от Северова
@@ -48,10 +56,6 @@ struct AUVCurrentData
     ControlData signalVMA_real;//управление на ВМА (текущие управляющие сигнлы на движители)
 };
 
-struct PowerSystemData
-{
-    //состояние системы питания
-};
 
 struct HeaderSwap
 {
@@ -117,9 +121,9 @@ struct FromPult
 {
     ControlData controlData; //данные, которые идут с пульта при замыканиии контуров
     e_CSMode cSMode; //режим работы
+    power_Mode pMode; //режим работы системы питания, структура с желаемыми параметрами системы питания
     ControlContoursFlags controlContoursFlags; //флаги замыкания контуров (если больше 0, то замкнуты
     bool modeAUV_selection;//текущий выбор модель/реальный НПА
-    PowerSystemData desiredPowerState; //структура с желаемыми параметрами системы питания
     uint checksum;
 };
 

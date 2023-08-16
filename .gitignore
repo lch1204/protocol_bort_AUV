@@ -1,0 +1,17 @@
+
+build/.qmake.stash
+build/debug/main.o
+build/debug/moc_pc_protocol.cpp
+build/debug/moc_protocol_bort.cpp
+build/debug/moc_protocol_pc.o
+build/debug/protocol_bort.o
+build/debug/protocol_pc.o
+build/debug/protocol_bort_AUV.exe
+build/debug/qpiconfig.o
+build/debug/moc_protocol_pc.cpp
+build/Makefile
+build/debug/moc_predefs.h
+build/debug/moc_pc_protocol.o
+build/Makefile.Debug
+build/debug/moc_protocol_bort.o
+build/Makefile.Release
