@@ -4,6 +4,7 @@
 #include "stdint.h"
 #include <QDebug>
 
+#pragma pack(push,1)
 
 enum class e_CSMode : quint8
 { //режим работы
@@ -21,7 +22,7 @@ enum class power_Mode : quint8
     MODE_5 //выключить вычислитель на 5 секунд и включить обратно
 };
 
-#pragma pack(push,1)
+
 //структура данных, которая передается из Северова в Пульт
 //тут описаны данные, которые Пульт принимает от Северова
 
@@ -85,6 +86,18 @@ struct DataAH127C
     float quat [4];
 };
 
+struct FlagAH127C_bort
+{
+    bool startCalibration = false;
+    bool endCalibration = false;
+};
+
+struct FlagAH127C_pult
+{
+    bool initCalibration = false;
+    bool saveCalibration = false;
+};
+
 struct DataPressure
 { //структура данных с датчика давления
     float temperature = 0; //Temperature returned in deg C.
@@ -114,6 +127,7 @@ struct ToPult
     DataPressure dataPressure; //данные с датчика давления
     DataUWB dataUWB;//данные с UWB
     uint checksum;
+    FlagAH127C_bort flagAH127C_bort;
 };
 
 //структура данных, которая передается из пульта в АНПА
@@ -125,6 +139,7 @@ struct FromPult
     ControlContoursFlags controlContoursFlags; //флаги замыкания контуров (если больше 0, то замкнуты
     bool modeAUV_selection;//текущий выбор модель/реальный НПА
     uint checksum;
+    FlagAH127C_pult flagAH127C_pult;
 };
 
 #pragma pack (pop)
