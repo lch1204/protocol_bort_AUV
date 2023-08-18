@@ -126,8 +126,9 @@ struct ToPult
     DataAH127C dataAH127C;// данные с БСО
     DataPressure dataPressure; //данные с датчика давления
     DataUWB dataUWB;//данные с UWB
-    uint checksum;
     FlagAH127C_bort flagAH127C_bort;
+    uint checksum;
+
 };
 
 //структура данных, которая передается из пульта в АНПА
@@ -135,11 +136,13 @@ struct FromPult
 {
     ControlData controlData; //данные, которые идут с пульта при замыканиии контуров
     e_CSMode cSMode = e_CSMode::MODE_MANUAL; //режим работы
-    power_Mode pMode = power_Mode::MODE_2; //режим работы системы питания, структура с желаемыми параметрами системы питания
+
     ControlContoursFlags controlContoursFlags; //флаги замыкания контуров (если больше 0, то замкнуты
     quint8 modeAUV_selection;//текущий выбор модель/реальный НПА
-    uint checksum;
+    power_Mode pMode = power_Mode::MODE_2; //режим работы системы питания, структура с желаемыми параметрами системы питания
     FlagAH127C_pult flagAH127C_pult;
+    uint checksum;
+
 };
 
 #pragma pack (pop)
