@@ -50,9 +50,9 @@ struct ControlContoursFlags
 struct AUVCurrentData
 {
     //!!тут все текущие параметры АНПА
-    quint8 modeReal;//текущий режим
+    quint8 modeReal = 0;//текущий режим
     ControlContoursFlags controlReal;//текущее состояние контуров, чтобы проверить что сигнал с пульта был обработан
-    quint8 modeAUV_Real;//текущий выбор модель/реальный НПА
+    quint8 modeAUV_Real = 0;//текущий выбор модель/реальный НПА
     ControlData ControlDataReal;//текущие курс, дифферент, крен, значения с имушки по сути
     ControlData signalVMA_real;//управление на ВМА (текущие управляющие сигнлы на движители)
 };
@@ -88,14 +88,14 @@ struct DataAH127C
 
 struct FlagAH127C_bort
 {
-    quint8 startCalibration = false;
-    quint8 endCalibration = false;
+    quint8 startCalibration = 0;
+    quint8 endCalibration = 0;
 };
 
 struct FlagAH127C_pult
 {
-    quint8 initCalibration = false;
-    quint8 saveCalibration = false;
+    quint8 initCalibration = 0;
+    quint8 saveCalibration = 0;
 };
 
 struct DataPressure
@@ -134,8 +134,8 @@ struct ToPult
 struct FromPult
 {
     ControlData controlData; //данные, которые идут с пульта при замыканиии контуров
-    e_CSMode cSMode; //режим работы
-    power_Mode pMode; //режим работы системы питания, структура с желаемыми параметрами системы питания
+    e_CSMode cSMode = e_CSMode::MODE_MANUAL; //режим работы
+    power_Mode pMode = power_Mode::MODE_2; //режим работы системы питания, структура с желаемыми параметрами системы питания
     ControlContoursFlags controlContoursFlags; //флаги замыкания контуров (если больше 0, то замкнуты
     quint8 modeAUV_selection;//текущий выбор модель/реальный НПА
     uint checksum;
