@@ -8,7 +8,7 @@
 
 enum class e_CSMode : quint8
 { //режим работы
-    MODE_HANDLE = 0, //ручной
+    MODE_MANUAL = 0, //ручной
     MODE_AUTOMATED, //автоматизированный
     MODE_AUTOMATIC, //автоматический
     MODE_GROUP //групповой
@@ -52,7 +52,7 @@ struct AUVCurrentData
     //!!тут все текущие параметры АНПА
     quint8 modeReal;//текущий режим
     ControlContoursFlags controlReal;//текущее состояние контуров, чтобы проверить что сигнал с пульта был обработан
-    bool modeAUV_Real;//текущий выбор модель/реальный НПА
+    quint8 modeAUV_Real;//текущий выбор модель/реальный НПА
     ControlData ControlDataReal;//текущие курс, дифферент, крен, значения с имушки по сути
     ControlData signalVMA_real;//управление на ВМА (текущие управляющие сигнлы на движители)
 };
@@ -88,14 +88,14 @@ struct DataAH127C
 
 struct FlagAH127C_bort
 {
-    bool startCalibration = false;
-    bool endCalibration = false;
+    quint8 startCalibration = false;
+    quint8 endCalibration = false;
 };
 
 struct FlagAH127C_pult
 {
-    bool initCalibration = false;
-    bool saveCalibration = false;
+    quint8 initCalibration = false;
+    quint8 saveCalibration = false;
 };
 
 struct DataPressure
@@ -137,7 +137,7 @@ struct FromPult
     e_CSMode cSMode; //режим работы
     power_Mode pMode; //режим работы системы питания, структура с желаемыми параметрами системы питания
     ControlContoursFlags controlContoursFlags; //флаги замыкания контуров (если больше 0, то замкнуты
-    bool modeAUV_selection;//текущий выбор модель/реальный НПА
+    quint8 modeAUV_selection;//текущий выбор модель/реальный НПА
     uint checksum;
     FlagAH127C_pult flagAH127C_pult;
 };
