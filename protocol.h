@@ -36,6 +36,16 @@ struct ControlData
     float lag       = 0;
 };
 
+struct ControlVMA
+{ //данные, которые идут на каждый ВМА
+    float VMA1     = 0;
+    float VMA2     = 0;
+    float VMA3     = 0;
+    float VMA4     = 0;
+    float VMA5     = 0;
+    float VMA6     = 0;
+};
+
 struct ControlContoursFlags
 { //флаги замыкания контуров (если 1, то замкнуты, 0 - разомкнуты)
     quint8 yaw = 1;
@@ -54,7 +64,7 @@ struct AUVCurrentData
     ControlContoursFlags controlReal;//текущее состояние контуров, чтобы проверить что сигнал с пульта был обработан
     quint8 modeAUV_Real = 0;//текущий выбор модель/реальный НПА
     ControlData ControlDataReal;//текущие курс, дифферент, крен, значения с имушки по сути
-    ControlData signalVMA_real;//управление на ВМА (текущие управляющие сигнлы на движители)
+    ControlVMA signalVMA_real;//управление на ВМА (текущие управляющие сигнлы на движители)
 };
 
 
