@@ -117,8 +117,7 @@ struct DataPressure
 
 struct DataUWB
 { //структура данных с сверхширокополосного модуля
-    float beacon_x[3];
-    float beacon_y[3];
+
     uint8_t error_code = 0;
     uint16_t connection_field = 0;
     float locationX = 0; //координата аппарата по оси X
@@ -126,6 +125,13 @@ struct DataUWB
     float distanceToBeacon[4]; //расстоние до i-го маяка
     float distanceToAgent[10]; //расстояние до i-го агента
 };
+
+struct PultUWB
+{
+    float beacon_x[3];
+    float beacon_y[3];
+};
+
 
 struct ToPult
 {
@@ -150,7 +156,7 @@ struct FromPult
 {
     ControlData controlData; //данные, которые идут с пульта при замыканиии контуров
     e_CSMode cSMode = e_CSMode::MODE_MANUAL; //режим работы
-
+    PultUWB pultUWB;
     ControlContoursFlags controlContoursFlags; //флаги замыкания контуров (если больше 0, то замкнуты
     quint8 modeAUV_selection;//текущий выбор модель/реальный НПА
     power_Mode pMode = power_Mode::MODE_2; //режим работы системы питания, структура с желаемыми параметрами системы питания
