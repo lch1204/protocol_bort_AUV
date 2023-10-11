@@ -115,7 +115,7 @@ struct DataPressure
     float pressure    = 0; // Pressure returned in mbar or mbar*conversion rate.
 };
 
-struct Data_bort_UWB
+struct DataUWB
 { //структура данных с сверхширокополосного модуля
 
     uint8_t error_code = 0;
@@ -132,7 +132,6 @@ struct PultUWB
     float beacon_y[3];
 };
 
-
 struct ToPult
 {
     ToPult(int auvID=0)
@@ -145,7 +144,7 @@ struct ToPult
     AUVCurrentData auvData;// данные о текущих параметрах
     DataAH127C dataAH127C;// данные с БСО
     DataPressure dataPressure; //данные с датчика давления
-    Data_bort_UWB dataUWB;//данные с UWB
+    DataUWB dataUWB;//данные с UWB
     FlagAH127C_bort flagAH127C_bort;
     uint checksum;
 
