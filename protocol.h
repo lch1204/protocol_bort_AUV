@@ -22,6 +22,23 @@ enum class power_Mode : quint8
     MODE_5 //выключить вычислитель на 5 секунд и включить обратно
 };
 
+enum class mission_Control : quint8
+{ //команды управления миссией
+    MODE_IDLE = 0, //ожидание
+    MODE_START, //отправка запроса на выполнение миссии
+    MODE_CANCEL, //отмена выполнения миссии
+    MODE_STOP, //пауза, остановить временно
+    MODE_COMPLETE //завершить миссию
+};
+
+enum class mission_Status : quint8
+{ //состояние миссии
+    MODE_IDLE = 0, //ожидание
+    MODE_ERROR, //ошибка инициализации миссии
+    MODE_RUNNING, //миссия запущена и выполняется
+    MODE_STOPPED, //миссия приостановлена, на паузе
+    MODE_PERFOMED, //миссия завершена
+};
 
 //структура данных, которая передается из Северова в Пульт
 //тут описаны данные, которые Пульт принимает от Северова
@@ -118,7 +135,7 @@ struct DataPressure
 struct DataUWB
 { //структура данных с сверхширокополосного модуля
 
-    uint8_t error_code = 0;
+    uint16_t error_code = 0;
     uint16_t connection_field = 0;
     float locationX = 0; //координата аппарата по оси X
     float locationY = 0; //координата аппарата по оси Y
@@ -146,6 +163,8 @@ struct ToPult
     DataPressure dataPressure; //данные с датчика давления
     DataUWB dataUWB;//данные с UWB
     FlagAH127C_bort flagAH127C_bort;
+    quint8 ID_mission = 0;
+    mission_Status missionStatus = mission_Status::MODE_IDLE;
     uint checksum;
 
 };
@@ -157,9 +176,11 @@ struct FromPult
     e_CSMode cSMode = e_CSMode::MODE_MANUAL; //режим работы
     PultUWB pultUWB;
     ControlContoursFlags controlContoursFlags; //флаги замыкания контуров (если больше 0, то замкнуты
-    quint8 modeAUV_selection;//текущий выбор модель/реальный НПА
+    quint8 modeAUV_selection = 0;//текущий выбор модель/реальный НПА
     power_Mode pMode = power_Mode::MODE_2; //режим работы системы питания, структура с желаемыми параметрами системы питания
     FlagAH127C_pult flagAH127C_pult;
+    quint8 ID_mission_AUV = 0;
+    mission_Control missionControl = mission_Control::MODE_IDLE;
     uint checksum;
 
 };

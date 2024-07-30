@@ -110,15 +110,17 @@ public slots:
         while(receiveSocket->hasPendingDatagrams()) {
             ReceiveStruct rec;// создаем локальную переменную для приема данных до проверки
             receiveSocket->readDatagram((char *)&rec, sizeof(rec)); //считываем данные
-            if (!validate(rec)) {
-                //Функция validate возвращает true - если контрольная сумма верна
-                //и возвращает false, если это не так
-                //в этой части функции контрольная сумма не верна
-                qDebug() << "Checksum validate" << validate(rec);
-                continue;
-                //оператор continue выполняет пропуск оставшейся части кода
-                //      тела цикла и переходит к следующей итерации цикла
-            }
+            qDebug() << sizeof(rec);
+//            if (!validate(rec)) {
+//                //Функция validate возвращает true - если контрольная сумма верна
+//                //и возвращает false, если это не так
+//                //в этой части функции контрольная сумма не верна
+//                qDebug() << "Checksum validate" << validate(rec);
+//                continue;
+//                //оператор continue выполняет пропуск оставшейся части кода
+//                //      тела цикла и переходит к следующей итерации цикла
+//            }
+//            else {qDebug() << "Checksum true" << validate(rec); }
             rec_data = rec;//Если контрльная сумма верна, то записываем
             //принятые данные в структуру rec_data
         }
